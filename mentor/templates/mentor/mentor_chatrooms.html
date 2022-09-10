@@ -1,0 +1,291 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.88.1">
+    <title>토닥토닥</title>
+    <link href="{% static 'image/favicon-96x96.png' %}" sizes="96x96" rel="shortcut icon" type="image/png">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mentor_main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mentor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/mentor_chatrooms.css' %}">
+</head>
+
+<!-- header -->
+{% include "user/header.html" %}
+
+<body>
+    <main>
+
+        <div class="container">
+            <h3 class=" text-center">Messaging</h3>
+            <div class="messaging">
+                  <div class="inbox_msg">
+                    <div class="inbox_people">
+                      <div class="headind_srch">
+                        <div class="recent_heading">
+                          <h4>채팅</h4>
+                        </div>
+                        <div class="srch_bar">
+                          <div class="stylish-input-group">
+                            <input type="text" class="search-bar"  placeholder="Search" >
+                            <span class="input-group-addon">
+                            <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                            </span> </div>
+                        </div>
+                      </div>
+                      
+                      <div class="inbox_chat">
+                        <div class="chat_list active_chat">
+                          <div class="chat_people">
+                            <div class="chat_img"> 
+                              
+                                <!-- Modal --> 
+                                <div class="modal">
+                                    <div class="modal_body" id="modal-body">
+                                        <div class="modal_mentor_card">
+
+                                            <div class="modal-card-body">
+                                                <div class="modal-mentor-image">                                                                                                                                                    
+                                                    <figure class="modal-image modla-is-1by1">
+                                                        <img class="modal-is-rounded"
+                                                            src="{% static 'image/Profile_photo.png' %}"
+                                                            alt="{mentor.mentor_img.url}}">
+                                                    </figure>
+                                                </div>
+                                                <div class="mentor-info">
+                                                    <h2 class="modal-mentor-title"> </h2>                                                                                            
+                                                </div>                                                                           
+                                            </div>
+                                            <div class="modal-department">
+                                                나이
+                                            </div>
+                                            <div class="modal-department">
+                                                학교
+                                            </div>
+                                            <div class="modal-department">
+                                                학과
+                                            </div>
+                                            <div class="modal-department">
+                                                재학여부
+                                            </div>
+                                            <div class="modal-selftitle">
+                                                자기소개
+                                            </div>
+                                            <div class="modal-selfcontent">
+                                                안녕하세요 잘 부탁드립니다
+                                                9월 개강 2학기 시작                                                                                                                                                                                                                                               
+                                            </div>                                                                                                    
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                               <img src="{% static 'image/Profile_photo.png' %}" class="profile-open-popup" alt="sunil"></div>
+                            <div class="chat_ib">
+                              <h5>Test <span class="chat_date">오후 6:17</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="chat_list">
+                          <div class="chat_people">
+                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                            <div class="chat_ib">
+                              <h5>Test2 <span class="chat_date">오전 11:30</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="chat_list">
+                          <div class="chat_people">
+                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                            <div class="chat_ib">
+                              <h5>Test3 <span class="chat_date">오후 1:49</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="chat_list">
+                          <div class="chat_people">
+                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                            <div class="chat_ib">
+                              <h5>Test4 <span class="chat_date">2022-09-04</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="chat_list">
+                          <div class="chat_people">
+                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                            <div class="chat_ib">
+                              <h5>Test5 <span class="chat_date">2022-09-04</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="chat_list">
+                          <div class="chat_people">
+                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                            <div class="chat_ib">
+                              <h5>Test6 <span class="chat_date">2022-09-03</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="chat_list">
+                          <div class="chat_people">
+                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                            <div class="chat_ib">
+                              <h5>Test7 <span class="chat_date">2022-09-03</span></h5>
+                              <p>Test, which is a new approach to have all solutions 
+                                astrology under one roof.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mesgs">
+                      <div class="msg_history">
+                        <div class="incoming_msg">
+                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                          <div class="received_msg">
+                                <div class="received_withd_msg">
+                                <p>Test which is a new approach to have all
+                                    solutions</p>
+                                <span class="time_date"> 오후 5:49 </span>
+                                </div>
+                          </div>
+                        </div>
+                        <div class="outgoing_msg">
+                          <div class="sent_msg">
+                            <p>It's being tested. Please check</p>
+                            <div class="outgoing_time"><span class="time_date"> 오후 6:11 </span></div>
+                          </div>
+                        </div>
+                        <div class="incoming_msg">
+                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                          <div class="received_msg">
+                            <div class="received_withd_msg">
+                              <p>Test, which is a new approach to have</p>
+                              <span class="time_date"> 오후 6:12 </span></div>
+                          </div>
+                        </div>
+                        <div class="outgoing_msg">
+                          <div class="sent_msg">
+                            <p>Yes, Test</p>
+                            <div class="outgoing_time"><span class="time_date"> 오후 6:30 </span> </div>
+                          </div>
+                        </div>
+                        <div class="incoming_msg">
+                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
+                          <div class="received_msg">
+                            <div class="received_withd_msg">
+                              <p>I'm making a skeleton for the chat room</p>
+                              <span class="time_date"> 오후 6:49 </span></div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input type="text" class="write_msg" placeholder="Type a message" />
+                            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send sendicon" viewBox="0 0 16 16">
+                                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
+                                </svg>
+                            </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>                  
+                </div></div>
+
+    </main>
+</body>
+
+<!-- Javascript -->
+<script>
+    const body = document.querySelector('body');
+    const modal = document.querySelectorAll('.modal');
+    const ProfileOpenPopup = document.querySelectorAll('.profile-open-popup');
+    
+  
+    ProfileOpenPopup.forEach((item, idx) =>{
+
+        item.addEventListener('click', (e)=>{
+        
+        console.log(e.target.getAttribute('id'));
+        //document.querySelector('.modal .m'+e.target.getAttribute('id')).classList.toggle('show');
+        e.target.previousElementSibling.classList.toggle('show');    
+
+        if (e.target.previousElementSibling.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        }
+        })
+        
+        item.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              modal.classList.toggle('show');
+    
+              if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+              }
+            }
+          });
+
+    });
+
+    //Hide modal
+    window.addEventListener('click', (e) => {
+        if (e.target.getAttribute('class') == 'modal show') 
+            e.target.classList.remove('show') 
+    });
+
+    {% comment %} btnOpenPopup.forEach((item, idx) =>{
+
+        item.addEventListener('click', (e)=>{
+        
+        console.log(modal[idx]);
+        modal.classList.toggle('show');
+    
+        if (modal.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        }
+        })
+        
+        item.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              modal.classList.toggle('show');
+    
+              if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+              }
+            }
+          });
+
+        }); {% endcomment %}
+
+       
+</script>
+
+<script src="https://cdn.inflearn.com/assets/js/jquery-1.12.4.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+</html>
+

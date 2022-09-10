@@ -22,172 +22,94 @@
 {% include "user/header.html" %}
 
 <body class="pg___instructors">
-
-<!-- mentor page header -->
-<div class="instructor_list_hero">
-    <div class="hero-content container">
-        <div class="hero-content__image-cover"></div>
-        <h1 class="heading_list">멘토링</h1>
-        <p class="heading_desc">
-            부모는 내 아이의 최고의 전문가입니다. <br class="is-hidden-tablet">그러기 위해서는 배워야 합니다.<br class="is-hidden-mobile">
-            교육이 필요한 모든 곳에 다가 갑니다.
-        </p>
-    </div>
-</div>
-
+    
 <!-- main -->
-<main class="container" id="main">
+<main class="container mt-5" id="main">
 
     <div id="root">
         <section class="instructor_list_section">
             <div class="content_palette" id="content_palette">
                 <div class="header_navigation"></div>
                 <div class="content_body">
-                    <!-- Left panel -->
-                    <div class="panel_left">
-                        <div class="sticky">
-                            <div class="field has-addons e-search-mentor is-hidden-mobile">
-                                <div class="control">
-                                    <input class="input" type="text" value="">
-                                </div>
-                                <div class="control">
-                                    <button class="button">검색</button>
-                                </div>
-                            </div>
-
-                            <!-- checkbox list -->
-                            <nav class="accordions checkbox_accordions">
-                                <div class="accordion is-active first_accordion">
-                                    <div class="accordion-header toggle">분야별</div>
-                                    <div class="accordion-body level_accordion_body">
-
-                                        <div class="accordion-content">
-                                            <div class="atom_checkbox accordion_checkbox">
-                                                <input class="visually_hidden checkbox" type="checkbox"
-                                                       data-type="terms" id="22" value="22">
-                                                <label for="22" class="left">
-                                                    언어 재활
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-content">
-                                            <div class="atom_checkbox accordion_checkbox">
-                                                <input class="visually_hidden checkbox" type="checkbox"
-                                                       data-type="terms" id="33" value="33">
-                                                <label for="33" class="left">
-                                                    작업 재활
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-content">
-                                            <div class="atom_checkbox accordion_checkbox">
-                                                <input class="visually_hidden checkbox" type="checkbox"
-                                                       data-type="terms" id="493" value="493">
-                                                <label for="493" class="left">
-                                                    놀이 재활
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-content">
-                                            <div class="atom_checkbox accordion_checkbox">
-                                                <input class="visually_hidden checkbox" type="checkbox"
-                                                       data-type="terms" id="494" value="494">
-                                                <label for="494" class="left">
-                                                    물리 재활
-                                                </label>
-                                            </div>
-                                        </div>
-
-                                        <div class="accordion-content">
-                                            <div class="atom_checkbox accordion_checkbox">
-                                                <input class="visually_hidden checkbox" type="checkbox"
-                                                       data-type="terms" id="666" value="666">
-                                                <label for="666" class="left">
-                                                    인지 재활
-                                                </label>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </nav>
-                        </div>
-                    </div>
-
 
                     <!-- Right panel / Profile list -->
+
                     <div class="panel_right">
                         <div class="view">
-
                             <div class="columns is-multiline is-mobile">
                                 <!-- Mentor -->
                                 {% for mentor in mentorList %}
                                 <div class="column is-3-desktop is-4-tablet is-6-mobile">
-                                    <div class="mentor_card" data-id=676>
+                                    <div class="mentor_card">
                                         <div class="card-body">
-                                            <div class="mentor-image">
+                                            <div class="mentor-image">                                                                                                                                                    
                                                 <figure class="image is-1by1">
                                                     <img class="is-rounded"
                                                          src="{{ mentor.mentor_img.url }}"
                                                          alt="{{mentor.mentor_img.url}}">
                                                 </figure>
-                                            </div>
+                                            </div>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
                                             <div class="mentor-info">
-                                                <h3 class="mentor-title">{{mentor.mento_title}}</h3>
-                                                <p class="mentor-username">{{mentor.mento_type}}</p>
-                                            </div>
+                                                <h2 class="mentor-title"> {{mentor.mento_title}} </h2>                                                                                            
+                                            </div>                                                                                    
                                         </div>
-                                        <div class="card-bottom">
+                                        <div class="mentor-info">
+                                            <p class="mentor-username">{{mentor.mento_type}}</p>
+                                        </div>
+                                        
+                                        <div class="card-bottom">                               
                                             <div class="buttons">
-                                                <a href="{% url 'mentor_profile' mentor.email.email %}" class="button">프로필</a>
-                                                <a href="{% url 'mentor_chat_propose' mentor.email.email %}" class="button" onclick="chat();">채팅신청 </a>
-                                                <button class="button e-mentoring" data-id=676 onclick="showPopup();">내용 보기</button>
-                                            </div>
-                                        </div>
-                                        <!---->
+                                                <!-- Modal --> 
+                                                <div  class="modal" id="modal-show">
+                                                    <div class="modal_body" id="modal-body">
+                                                        <div class="modal_mentor_card">
 
+                                                            <div class="modal-card-body">
+                                                                <div class="modal-mentor-image">                                                                                                                                                    
+                                                                    <figure class="modal-image modla-is-1by1">
+                                                                        <img class="modal-is-rounded"
+                                                                            src="{{ mentor.mentor_img.url }}"
+                                                                            alt="{{mentor.mentor_img.url}}">
+                                                                    </figure>
+                                                                </div>
+                                                                <div class="mentor-info">
+                                                                    <h2 class="modal-mentor-title"> {{mentor.mento_title}} </h2>                                                                                            
+                                                                </div>                                                                           
+                                                            </div>
+                                                            <div class="modal-department">
+                                                                나이
+                                                            </div>
+                                                            <div class="modal-department">
+                                                                학교
+                                                            </div>
+                                                            <div class="modal-department">
+                                                                학과
+                                                            </div>
+                                                            <div class="modal-department">
+                                                                재학여부
+                                                            </div>
+                                                            <div class="modal-selftitle">
+                                                                자기소개
+                                                            </div>
+                                                            <div class="modal-selfcontent">
+                                                                안녕하세요 잘 부탁드립니다
+                                                                9월 개강 2학기 시작                                                                                                                                                                                                                                               
+                                                            </div>
+                                                            <div class="modal-chat-btn-display">
+                                                            <a href="{% url 'mentor_chatrooms' %}"> <button class="modal-chat-btn">채팅신청</button></a>                                                          
+                                                            </div>                                                           
+                                                        </div>
+                                                    </div>
+                                                </div>                                                                                                 
+                                                <button  id="{{ mentor.mentor_id }}" class="button e-mentoring btn-open-popup">상세정보</button>
+                                            </div>
+                                        </div>                                       
                                     </div>
                                 </div>
+
                                 {% endfor %}
 
-                                <!-- Page -->
-                                <nav class="comp_paginate" role="navigation" aria-label="pagination">
-                                    <ul class="pages">
-                                        {% if mentorList.has_previous %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page={{ mentorList.previous_page_number }}">이전</a>
-                                        </li>
-                                        {% else %}
-                                        <li class="page-item disabled">
-                                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
-                                        </li>
-                                        {% endif %}
-                                        <!-- 페이지리스트 -->
-                                        {% for page_number in mentorList.paginator.page_range %}
-                                        {% if page_number >= mentorList.number|add:-5 and page_number <= mentorList.number|add:5 %}
-                                        {% if page_number == mentorList.number %}
-                                        <li class="page-item active" aria-current="page">
-                                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-                                        </li>
-                                        {% else %}
-                                        <li class="page-item">
-                                            <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
-                                        </li>
-                                        {% endif %}
-                                        {% endif %}
-                                        {% endfor %}
-                                        <!-- 다음페이지 -->
-                                        {% if mentorList.has_next %}
-                                        <li class="page-item">
-                                            <a class="page-link"
-                                               href="?page={{ mentorList.next_page_number }}">다음</a>
-                                        </li>
-                                        {% else %}
-                                        <li class="page-item disabled">
-                                            <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
-                                        </li>
-                                        {% endif %}
+                                
                                         <!--                                        <li>-->
                                         <!--                                            <button class="page e-pagination  active" data-page="1"-->
                                         <!--                                                    aria-label="1페이지로 이동">1-->
@@ -221,14 +143,77 @@
                     </div>
                 </div>
 </main>
-</main>
-
 
 </body>
+<!-- Javascript -->
 <script language="javascript">
       function showPopup() { window.open("{% url 'mentor_content' %}", "a", "width=436, height=600, left=550, top=50"); }
 </script>
-<!-- Javascript -->
+<script>
+    const body = document.querySelector('body');
+    const modal = document.querySelectorAll('.modal');
+    const btnOpenPopup = document.querySelectorAll('.btn-open-popup');
+    
+  
+    btnOpenPopup.forEach((item, idx) =>{
+
+        item.addEventListener('click', (e)=>{
+
+        console.log(e.target.getAttribute('id'));
+        //document.querySelector('.modal .m'+e.target.getAttribute('id')).classList.toggle('show');
+        e.target.previousElementSibling.classList.toggle('show');    
+
+        if (e.target.previousElementSibling.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        }
+        })
+        
+        item.addEventListener('click', (e) => {
+            var click_button = e.target;
+            console.log(click_button);
+            if (e.target === modal) {
+              modal.classList.toggle('show');
+    
+              if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+              }
+            }
+          });
+
+    });
+
+    //Hide modal
+    window.addEventListener('click', (e) => {
+        if (e.target.getAttribute('class') == 'modal show') 
+            e.target.classList.remove('show') 
+    });
+
+    {% comment %} btnOpenPopup.forEach((item, idx) =>{
+
+        item.addEventListener('click', (e)=>{
+        
+        console.log(modal[idx]);
+        modal.classList.toggle('show');
+    
+        if (modal.classList.contains('show')) {
+          body.style.overflow = 'hidden';
+        }
+        })
+        
+        item.addEventListener('click', (e) => {
+            if (e.target === modal) {
+              modal.classList.toggle('show');
+    
+              if (!modal.classList.contains('show')) {
+                body.style.overflow = 'auto';
+              }
+            }
+          });
+
+        }); {% endcomment %}
+
+       
+</script>
 <script src="https://cdn.inflearn.com/assets/js/jquery-1.12.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

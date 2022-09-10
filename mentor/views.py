@@ -41,6 +41,8 @@ def mentor_profile(request, email):
     context = {'mento': mento}
     return render(request, 'mentor/mentor_profile.html', context)
 
+def mentor_chatrooms(request):
+    return render(request, 'mentor/mentor_chatrooms.html')
 
 def chat_propose(request, email):
     print('입장')

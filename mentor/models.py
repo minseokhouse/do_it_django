@@ -8,7 +8,7 @@ from user.models import User
 
 class Mentor(models.Model):
     mentor_id = models.AutoField(primary_key=True)
-    email = models.ForeignKey('user.User', on_delete=models.CASCADE)
+    email = models.ForeignKey('user.User', on_delete=models.CASCADE, default='')
     mentor = models.CharField(max_length=30)
     mentor_img = models.ImageField(upload_to='images/')
     mento_title = models.CharField(max_length=100)
