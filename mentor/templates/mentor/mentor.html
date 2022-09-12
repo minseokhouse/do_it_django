@@ -92,12 +92,12 @@
                                                                 자기소개
                                                             </div>
                                                             <div class="modal-selfcontent">
-                                                                안녕하세요 잘 부탁드립니다
-                                                                9월 개강 2학기 시작                                                                                                                                                                                                                                               
+                                                                {{mentor.mento_content}}
                                                             </div>
                                                             <div class="modal-chat-btn-display">
-                                                            <a href="{% url 'mentor_chatrooms' %}"> <button class="modal-chat-btn">채팅신청</button></a>                                                          
-                                                            </div>                                                           
+                                                            <a id="{{ mentor.email_id }}" href="{% url 'mentor_chatrooms' myEmail mentor.email_id %}"> <button id="{{ mentor.email_id }}" class="modal-chat-btn">채팅신청</button></a>
+{#                                                            <a id="{{ mentor.email_id }}" href="/mentor_chatrooms/{{ myEmail }}/{{ id }}"> <button id="{{ mentor.email_id }}" class="modal-chat-btn">채팅신청</button></a>#}
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>                                                                                                 

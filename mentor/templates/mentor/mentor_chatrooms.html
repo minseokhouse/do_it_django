@@ -42,167 +42,87 @@
                       </div>
                       
                       <div class="inbox_chat">
-                        <div class="chat_list active_chat">
-                          <div class="chat_people">
-                            <div class="chat_img"> 
+
                               
-                                <!-- Modal --> 
-                                <div class="modal">
-                                    <div class="modal_body" id="modal-body">
-                                        <div class="modal_mentor_card">
+{#                                <!-- Modal --> #}
+{#                                <div class="modal">#}
+{#                                    <div class="modal_body" id="modal-body">#}
+{#                                        <div class="modal_mentor_card">#}
+{##}
+{#                                            <div class="modal-card-body">#}
+{#                                                <div class="modal-mentor-image">                                                                                                                                                    #}
+{#                                                    <figure class="modal-image modla-is-1by1">#}
+{#                                                        <img class="modal-is-rounded"#}
+{#                                                            src="{% static 'image/Profile_photo.png' %}"#}
+{#                                                            alt="{mentor.mentor_img.url}}">#}
+{#                                                    </figure>#}
+{#                                                </div>#}
+{#                                                <div class="mentor-info">#}
+{#                                                    <h2 class="modal-mentor-title"> </h2>                                                                                            #}
+{#                                                </div>                                                                           #}
+{#                                            </div>#}
+{#                                            <div class="modal-department">#}
+{#                                                나이#}
+{#                                            </div>#}
+{#                                            <div class="modal-department">#}
+{#                                                학교#}
+{#                                            </div>#}
+{#                                            <div class="modal-department">#}
+{#                                                학과#}
+{#                                            </div>#}
+{#                                            <div class="modal-department">#}
+{#                                                재학여부#}
+{#                                            </div>#}
+{#                                            <div class="modal-selftitle">#}
+{#                                                자기소개#}
+{#                                            </div>#}
+{#                                            <div class="modal-selfcontent">#}
+{#                                                안녕하세요 잘 부탁드립니다#}
+{#                                                9월 개강 2학기 시작                                                                                                                                                                                                                                               #}
+{#                                            </div>                                                                                                    #}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </div>#}
+                        {% for one_query in result_query %}
+                          <div class="chat_list active_chat" email="{{ one_query.email }}" id="{{ one_query.room_id }}">
+                              <div class="chat_people">
+                                  <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" class="profile-open-popup" alt="sunil"></div>
+                            <div class="chat_ib" email="{{ one_query.email }}" id="{{ one_query.room_id }}">
+                              <h5>{{ one_query.name }} <span class="chat_date">{{ one_query.updated_at }}</span></h5>
+                              <p>{{ one_query.message}}</p>
+                            </div>
+                          </div>
+                        </div>
+                        {% endfor %}
 
-                                            <div class="modal-card-body">
-                                                <div class="modal-mentor-image">                                                                                                                                                    
-                                                    <figure class="modal-image modla-is-1by1">
-                                                        <img class="modal-is-rounded"
-                                                            src="{% static 'image/Profile_photo.png' %}"
-                                                            alt="{mentor.mentor_img.url}}">
-                                                    </figure>
-                                                </div>
-                                                <div class="mentor-info">
-                                                    <h2 class="modal-mentor-title"> </h2>                                                                                            
-                                                </div>                                                                           
-                                            </div>
-                                            <div class="modal-department">
-                                                나이
-                                            </div>
-                                            <div class="modal-department">
-                                                학교
-                                            </div>
-                                            <div class="modal-department">
-                                                학과
-                                            </div>
-                                            <div class="modal-department">
-                                                재학여부
-                                            </div>
-                                            <div class="modal-selftitle">
-                                                자기소개
-                                            </div>
-                                            <div class="modal-selfcontent">
-                                                안녕하세요 잘 부탁드립니다
-                                                9월 개강 2학기 시작                                                                                                                                                                                                                                               
-                                            </div>                                                                                                    
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                               <img src="{% static 'image/Profile_photo.png' %}" class="profile-open-popup" alt="sunil"></div>
-                            <div class="chat_ib">
-                              <h5>Test <span class="chat_date">오후 6:17</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="chat_list">
-                          <div class="chat_people">
-                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                            <div class="chat_ib">
-                              <h5>Test2 <span class="chat_date">오전 11:30</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="chat_list">
-                          <div class="chat_people">
-                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                            <div class="chat_ib">
-                              <h5>Test3 <span class="chat_date">오후 1:49</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="chat_list">
-                          <div class="chat_people">
-                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                            <div class="chat_ib">
-                              <h5>Test4 <span class="chat_date">2022-09-04</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="chat_list">
-                          <div class="chat_people">
-                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                            <div class="chat_ib">
-                              <h5>Test5 <span class="chat_date">2022-09-04</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="chat_list">
-                          <div class="chat_people">
-                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                            <div class="chat_ib">
-                              <h5>Test6 <span class="chat_date">2022-09-03</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="chat_list">
-                          <div class="chat_people">
-                            <div class="chat_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                            <div class="chat_ib">
-                              <h5>Test7 <span class="chat_date">2022-09-03</span></h5>
-                              <p>Test, which is a new approach to have all solutions 
-                                astrology under one roof.</p>
-                            </div>
-                          </div>
-                        </div>
                       </div>
                     </div>
-                    <div class="mesgs">
+
+                    <div id="chat_Table" class="mesgs">
                       <div class="msg_history">
-                        <div class="incoming_msg">
-                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                          <div class="received_msg">
-                                <div class="received_withd_msg">
-                                <p>Test which is a new approach to have all
-                                    solutions</p>
-                                <span class="time_date"> 오후 5:49 </span>
-                                </div>
-                          </div>
-                        </div>
-                        <div class="outgoing_msg">
-                          <div class="sent_msg">
-                            <p>It's being tested. Please check</p>
-                            <div class="outgoing_time"><span class="time_date"> 오후 6:11 </span></div>
-                          </div>
-                        </div>
-                        <div class="incoming_msg">
-                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                          <div class="received_msg">
-                            <div class="received_withd_msg">
-                              <p>Test, which is a new approach to have</p>
-                              <span class="time_date"> 오후 6:12 </span></div>
-                          </div>
-                        </div>
-                        <div class="outgoing_msg">
-                          <div class="sent_msg">
-                            <p>Yes, Test</p>
-                            <div class="outgoing_time"><span class="time_date"> 오후 6:30 </span> </div>
-                          </div>
-                        </div>
-                        <div class="incoming_msg">
-                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>
-                          <div class="received_msg">
-                            <div class="received_withd_msg">
-                              <p>I'm making a skeleton for the chat room</p>
-                              <span class="time_date"> 오후 6:49 </span></div>
-                          </div>
-                        </div>
-                      </div>
+
+{#                        <div class="incoming_msg">#}
+{#                          <div class="incoming_msg_img"> <img src="{% static 'image/Profile_photo.png' %}" alt="sunil"> </div>#}
+{#                          <div class="received_msg">#}
+{#                                <div class="received_withd_msg">#}
+{#                                <p>Test which is a new approach to have all#}
+{#                                    solutions</p>#}
+{#                                <span class="time_date"> 오후 5:49 </span>#}
+{#                                </div>#}
+{#                          </div>#}
+{#                        </div>#}
+{#                        <div class="outgoing_msg">#}
+{#                          <div class="sent_msg">#}
+{#                            <p>It's being tested. Please check</p>#}
+{#                            <div class="outgoing_time"><span class="time_date"> 오후 6:11 </span></div>#}
+{#                          </div>#}
+{#                        </div>#}
+{#                      </div>#}
 
                       <div class="type_msg">
                         <div class="input_msg_write">
-                            <input type="text" class="write_msg" placeholder="Type a message" />
-                            <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+                            <input type="text" id="chat-message-input" class="write_msg" placeholder="Type a message" />
+                            <button id="chat-message-submit" class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send sendicon" viewBox="0 0 16 16">
                                     <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z"/>
                                 </svg>
@@ -210,6 +130,8 @@
                         </div>
                       </div>
                     </div>
+
+
                   </div>                  
                 </div></div>
 
@@ -217,7 +139,105 @@
 </body>
 
 <!-- Javascript -->
+<!--room_name 을 핸들링 하는 json script-->
+{{ room_name|json_script:"room-name" }}
+{{ login_user.email|json_script:"user_email" }}
+{{ login_user.email|json_script:"user_id" }}
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
+
+
+    // JSON.parse() 메소드 : json 문자열의 구문을 분석하고 결과로 javascript 값이나 객체 생성
+    const roomName = JSON.parse(document.getElementById('room-name').textContent);
+    const user_email = JSON.parse(document.getElementById('user_email').textContent);
+    const user_id = JSON.parse(document.getElementById('user_id').textContent);
+
+
+    console.log(roomName)
+    console.log(user_email)
+    console.log(user_id)
+    {#var roomName = "";#}
+    console.log('채팅방 입장');
+    {#var chatSocket = new WebSocket(#}
+    {#    'ws://' + window.location.host +#}
+    {#    '/ws/mypage/chat/' + '{{ room_name }}' + '/');#}
+    {#console.log('여기까지 1');#}
+    {#    // chat-log id를 통해서 기존 message 에 추가해서 message 를 onmessage 해줌#}
+    {##}
+    {#// chatSocket에 onopen 메소드 지정#}
+    {#chatSocket.onopen = function (e) {#}
+    {#    fetchMessages();#}
+    {#}#}
+    {##}
+    {##}
+    {##}
+    {#chatSocket.onmessage = function (e) {#}
+    {#    console.log(e.data);#}
+    {#    const data = JSON.parse(e.data);#}
+    {#    if (data['command'] === 'messages') {#}
+    {#        for (let i = 0; i < data['messages'].length; i++) {#}
+    {#            createMessage(data['messages'][i]);#}
+    {#        }#}
+    {#    } else if (data['command'] === 'new_message') {#}
+    {#        createMessage(data['message']);#}
+    {#    }#}
+    {#};#}
+    {##}
+    {##}
+    {#chatSocket.onclose = function(e) {#}
+    {#    console.log('강제종료');#}
+    {#    console.error('Chat socket closed unexpectedly');#}
+    {#};#}
+    {##}
+    {#document.querySelector('#chat-message-input').focus();#}
+    {#document.querySelector('#chat-message-input').onkeyup = function(e) {#}
+    {#    if (e.keyCode === 13) {  // enter, return#}
+    {#        document.querySelector('#chat-message-submit').click();#}
+    {#    }#}
+    {#};#}
+    {##}
+    {#document.querySelector('#chat-message-submit').onclick = function(e) {#}
+    {#    const messageInputDom = document.querySelector('#chat-message-input');#}
+    {#    const message = messageInputDom.value;#}
+    {#    chatSocket.send(JSON.stringify({#}
+    {#        'message': message,#}
+    {#        'user': user_email,#}
+    {#        'user_id': user_id,#}
+    {#        'command': 'new_message',#}
+            {#'userinfo_object': {{ userinfo_object.name }}#}
+    {#    }));#}
+    {##}
+    {#    messageInputDom.value = '';#}
+    {#};#}
+    {##}
+    {#function fetchMessages() {#}
+    {#    chatSocket.send(JSON.stringify({'command': 'fetch_messages'}))#}
+    {#}#}
+    {##}
+    {##}
+    {#function createMessage(data) {#}
+    {#    var author = data['author'];#}
+    {#    if(author == '{{ login_user.name }}') {#}
+    {#        jQuery('#chat_Table').append("<div class='outgoing_msg'><div class='sent_msg'><p>" + data.content + "</p><div class='outgoing_time'>"#}
+    {#            + "<span class='time_date'> 오후 6:11 </span></div></div></div>");#}
+    {#    }#}
+    {#    else{#}
+    {#         jQuery('#chat_Table').append("<div class='incoming_msg'><div class='incoming_msg_img'>" +#}
+    {#             "<img src=" + "'{% static 'image/Profile_photo.png' %} alt='sunil'></div>"  +#}
+    {#             "<div class='received_msg'><p>" + data.content + "</p>" +#}
+    {#             "<span class='time_date'> 오후 5:49 </span></div></div></div>");#}
+    {#    }#}
+
+        {#jQuery('#chat-log').scrollTop(jQuery('#chat-log')[0].scrollHeight);#}
+        {#$("#test>tbody").append("<tr><td>Test Row Append</td></tr>");#}
+        {#jQuery('#chat-log').append(author + ': ' + data.content + '<br>');#}
+        {#document.querySelector('#chat-log').value += (author + ': ' + data.content + '\n');#}
+
+
+    {#}#}
+
+
+
     const body = document.querySelector('body');
     const modal = document.querySelectorAll('.modal');
     const ProfileOpenPopup = document.querySelectorAll('.profile-open-popup');

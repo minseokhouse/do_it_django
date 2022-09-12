@@ -144,7 +144,8 @@ def room_view(request: HttpRequest, room_name: str, with_name: str) -> HttpRespo
 
         message = get_an_message_list(room_id)
 
-        return render(request, "mypage/chat/room.html", {"room_name": room_name, "message": message, "login_user": login_user})
+        return render(request, "mypage/chat/room.html",
+                      {"room_name": room_name, "message": message, "login_user": login_user})
 
     except:
         return redirect(("/"))
@@ -219,7 +220,6 @@ def chat_propose(request, email):
         #                'receivePropose': receivePropose, 'bothPropose': bothPropose})
         # # return redirect('mypage')
         # return redirect('reservationChat')
-
 
 
 def chat_cancel(request, id):
