@@ -1,6 +1,6 @@
 from django.db.models import QuerySet
 
-from .message import Message
+from mentor.message import Message
 
 
 def creat_an_message(email: str, room_id: int, message: str) -> Message:

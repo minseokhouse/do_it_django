@@ -1,5 +1,4 @@
-from .base_model import BaseModel
-from django.db import models
+from mentor.base_model import BaseModel
 
 
 class Room(BaseModel):

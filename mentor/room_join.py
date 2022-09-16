@@ -1,7 +1,7 @@
 from django.db import models
 
-from .base_model import BaseModel
-from .room import Room
+from mentor.base_model import BaseModel
+from mentor.room import Room
 from user.models import User
 
 

@@ -1,10 +1,12 @@
 # chat/consumers.py
+from datetime import timedelta
+
 from asgiref.sync import async_to_sync
 from channels.generic.websocket import WebsocketConsumer
 import json
 
-from .room import Room
-from .message import Message
+from mentor.room import Room
+from mentor.message import Message
 
 # 동기식 방법으로 진행
 from user.models import User
@@ -14,7 +16,7 @@ def message_to_json(message):
     return {
         'author': message.email.name,
         'content': message.message,
-        'timestamp': str(message.created_at)
+        'timestamp': str(message.created_at + timedelta(hours=9))
     }
 
 

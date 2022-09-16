@@ -4,8 +4,16 @@ from django.db.models import QuerySet
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from mentor.models import Mentor
-from mypage.models import Chat_Propose
+from mentor.models import Chat_Propose
 from user.models import User
+from collections import Counter
+from mentor.chat_room_service import get_an_chat_room_list, get_chat_room_user, confirm_user_chat_room_join, \
+    creat_an_chat_room, creat_an_room_join
+from mentor.message_service import get_an_message_list
+# from .models import Chat_Propose
+from mentor.room_join import RoomJoin
+import bcrypt
+from django.http import HttpRequest, HttpResponse
 
 
 def mentor(request):
@@ -49,6 +57,37 @@ def mentor_profile(request, email):
 def mentor_chatrooms(request: HttpRequest, myEmail: str, id: str) -> HttpResponse:
     print('id:' + id)
     login_user = User.objects.get(email=myEmail)
+    print(login_user)
+    #  채팅방생성
+    print('여기 입장')
+    user1 = User.objects.get(email=myEmail)
+    user2 = User.objects.get(email=id)
+    print(user1, user2)
+    find_room_qs = RoomJoin.objects.filter(email__in=[user1.email, user2.email])
+    # 이러면 1번 유저가 참여한 모든 방, 2번 유저가 모두 참여한 방 가져옴
+    print(find_room_qs)
+    find_room_list = []
+    for find_room in find_room_qs:
+        find_room_list.append(find_room.room_id)
+
+    result = Counter(find_room_list)
+    room_id = 0
+
+    for key, value in result.items():
+        if value >= 2:
+            print('이미 있다')
+            print(str(key.id))
+            print(user1.email)
+            room_id = key.id
+            break
+            # return redirect("../chat/" + str(key.id) + "/" + str(user1.email))
+
+    if room_id == 0:
+        room = creat_an_chat_room()
+        room_id = room.id
+        creat_an_room_join(user1, user2, room)
+        print('여기도 입장')
+
     my_role = login_user.role
     conn = MySQLdb.connect(host='localhost', user='root', passwd='Fleur0320!@#', db='django_insta')
     cur = conn.cursor()
@@ -62,7 +101,7 @@ def mentor_chatrooms(request: HttpRequest, myEmail: str, id: str) -> HttpRespons
 
     else:
         print('not parents')
-        query = "select user_user.name, room_join.email, date_add(message.updated_at, interval 9 hour), message.message, message.room_id from user_user as user_user inner join roomjoin as room_join on user_user.email = room_join.email inner join message as message on room_join.room_id = message.room_id where message.id in (select max(id) from message group by room_id) and user_user.role = 'Parents' and room_join.room_id in (select room_id from roomjoin where email =" + myEmail2 + ")"
+        query = "select user_user.name, room_join.email, date_add(message.updated_at, interval 9 hour), message.message, message.room_id from user_user as user_user inner join roomjoin as room_join on user_user.email = room_join.email inner join message as message on room_join.room_id = message.room_id where message.id in (select max(id) from message group by room_id) and user_user.role = 'Parents' and room_join.room_id in (select room_id from roomjoin where email =" + myEmail2 + " )"
 
     result_query = cur.execute(query)
     result_query = cur.fetchall()
@@ -78,10 +117,9 @@ def mentor_chatrooms(request: HttpRequest, myEmail: str, id: str) -> HttpRespons
         result_out.append(row)
 
     print(result_query)
+
     return render(request, 'mentor/mentor_chatrooms.html',
-                  {'result_query': result_out})
-
-
+                  {'result_query': result_out, 'room_name': room_id, 'login_user': login_user, 'myEmail': myEmail})
 
     # Chat_Propose.objects.select_related('mentor').filter(my_email=myEmail, Mentor_number=1)
     # bothPropose = Chat_Propose.objects.filter(my_email=myEmail, Mentor_number=1)
@@ -130,6 +168,35 @@ def chat_propose(request, email):
         return render(request, 'mypage/mypage.html')
         # return redirect('mypage')
         # return redirect('reservationChat')
+
+
+def api_create_room(request: HttpRequest, email: str) -> HttpResponse:
+    print('여기 입장')
+    user1 = User.objects.get(email=email)
+    session = request.session['user']
+    user2 = User.objects.get(email=session)
+
+    find_room_qs = RoomJoin.objects.filter(email__in=[user1.email, user2.email])
+    # 이러면 1번 유저가 참여한 모든 방, 2번 유저가 모두 참여한 방 가져옴
+
+    find_room_list = []
+    for find_room in find_room_qs:
+        find_room_list.append(find_room.room_id)
+
+    result = Counter(find_room_list)
+    for key, value in result.items():
+        if value >= 2:
+            print('이미 있다')
+            print(str(key.id))
+            print(user1.email)
+            return redirect("../chat/" + str(key.id) + "/" + str(user1.email))
+
+    room = creat_an_chat_room()
+    room_id = room.id
+    creat_an_room_join(user1, user2, room)
+    print('여기도 입장')
+    return redirect(("../chat/" + str(room_id) + "/" + str(user1.email)))
+    # return redirect(("/chat/" + str(room_id)))
 
 
 def search(request):

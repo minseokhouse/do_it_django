@@ -2,8 +2,8 @@ from typing import Tuple
 
 from django.db.models import QuerySet
 
-from .room import Room
-from .room_join import RoomJoin
+from mentor.room import Room
+from mentor.room_join import RoomJoin
 
 
 def creat_an_chat_room() -> Room:

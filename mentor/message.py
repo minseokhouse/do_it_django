@@ -1,7 +1,7 @@
 from django.db import models
 
-from .base_model import BaseModel
-from .room import Room
+from mentor.base_model import BaseModel
+from mentor.room import Room
 from user.models import User
 
 
@@ -17,4 +17,4 @@ class Message(BaseModel):
         return self.email.email
 
     def last_30_messages(self, room_id):
-        return Message.objects.filter(room_id=room_id).order_by('created_at')[:30]
+        return Message.objects.filter(room_id=room_id).order_by('created_at')[:50]
